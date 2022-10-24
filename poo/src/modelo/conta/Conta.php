@@ -1,5 +1,7 @@
 <?php
 
+namespace estudos\banco\modelo\conta;
+
 class Conta
 {
     private $titular;
@@ -54,7 +56,7 @@ class Conta
         return $this->saldo;
     }
 
-    public function recuperaNomeTitular():string
+    public function recuperaNome():string
     {
         return $this->titular->recuperaNome();
     }
