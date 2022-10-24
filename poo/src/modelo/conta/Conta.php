@@ -4,23 +4,16 @@ namespace Estudos\Bancos\Modelo\Conta;
 
 use Estudos\Bancos\Modelo\Conta\Titular;
 
-class Conta
+abstract class Conta
 {
     private $titular;
     private $saldo;
     private static $numeroDeContas = 0;
 
-    /**
-     * @var int $tipo 1 = Conta Corrente; 2 = Poupança
-     */
-    private $tipo;
-
-    public function __construct(Titular $titular, int $tipo)
+    public function __construct(Titular $titular)
     {
         $this->titular = $titular;
         $this->saldo = 0;
-        $this->tipo = $tipo;
-
         self::$numeroDeContas++;
     }
 
@@ -32,12 +25,7 @@ class Conta
     
     public function saca(float $valorASacar): void
     {
-        if ($this->tipo === 1) {
-            $tarifaSaque = $valorASacar * 0.05;
-        } else {
-            $tarifaSaque = $valorASacar * 0.03;
-        }
-        
+        $tarifaSaque = $valorASacar * $this->percentualTarifa();
         $valorSaque = $valorASacar + $tarifaSaque;
         if ($valorSaque> $this->saldo) {
             echo "Saldo indisponível";
@@ -56,16 +44,6 @@ class Conta
         $this->saldo += $valorADepositar;
     }
 
-    public function transfere(float $valorATransferir, Conta $contaDestino)
-    {
-        if ($valorATransferir > $this->saldo) {
-            echo 'Saldo indisponível!';
-            return;
-        }
-        $this->saca($valorATransferir);
-        $contaDestino->deposita($valorATransferir);
-    }
-
     public function recuperaSaldo()
     {
         return $this->saldo;
@@ -81,8 +59,10 @@ class Conta
         return $this->titular->recuperaCpf();
     }
 
-    public static function recuperaNumeroContas()
+    public static function recuperaNumeroContas():int
     {
         return self::$numeroDeContas;
     }
+
+    abstract protected function percentualTarifa():float;
 }
