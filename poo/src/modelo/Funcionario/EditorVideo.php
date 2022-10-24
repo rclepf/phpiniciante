@@ -2,10 +2,10 @@
 
 namespace Estudos\Bancos\Modelo\Funcionario;
 
-class Gerente extends Funcionario
+class EditorVideo extends Funcionario
 {
     public function calculaBonificacao(): float
     {
-        return $this->recuperaSalario();
+        return 600;
     }
 }

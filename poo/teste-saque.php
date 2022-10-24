@@ -8,7 +8,7 @@ require_once 'autoload.php';
 $conta = new ContaPoupanca(
     new Titular(
         new CPF('123.456.789-10'),
-        'Vinicius Dias', 
+        'Vinicius Dias',
         new Endereco('Petropolis', 'bairro Teste', 'Rua lá', '37')
     ),
 );
@@ -16,7 +16,7 @@ $conta = new ContaPoupanca(
 $conta2 = new ContaCorrente(
     new Titular(
         new CPF('123.456.789-15'),
-        'José Dias', 
+        'José Dias',
         new Endereco('BH', 'Centro', 'Rua 5', '37')
     ),
 );

@@ -4,7 +4,7 @@ namespace Estudos\Bancos\Modelo;
 
 use Estudos\Bancos\Modelo\CPF;
 
-class Pessoa
+abstract class Pessoa
 {
     protected string $nome;
     private CPF $cpf;
@@ -25,7 +25,7 @@ class Pessoa
     {
         return $this->cpf->recuperaNumero();
     }
-    
+
     protected function validaNome(string $nome)
     {
         if (strlen($nome) < 5) {
@@ -33,4 +33,4 @@ class Pessoa
             exit();
         }
     }
-} 
+}
