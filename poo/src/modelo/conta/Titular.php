@@ -2,9 +2,9 @@
 
 namespace Estudos\Bancos\Modelo\Conta;
 
-use Estudos\Bancos\Modelo\{Pessoa, CPF, Endereco};
+use Estudos\Bancos\Modelo\{Autenticavel, Pessoa, CPF, Endereco};
 
-class Titular extends Pessoa
+class Titular extends Pessoa implements Autenticavel
 {
     private Endereco $endereco;
 
@@ -13,9 +13,14 @@ class Titular extends Pessoa
         parent::__construct($nome, $cpf);
         $this->endereco = $endereco;
     }
-    
-    public function recuperaEndereco():Endereco
+
+    public function recuperaEndereco(): Endereco
     {
         return $this->endereco;
+    }
+
+    public function podeAutenticar(string $senha): bool
+    {
+        return $senha === 'abcd';
     }
 }

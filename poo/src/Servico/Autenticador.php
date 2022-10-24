@@ -2,13 +2,13 @@
 
 namespace Estudos\Bancos\Servico;
 
-use Estudos\Bancos\Modelo\Funcionario\Diretor;
+use Estudos\Bancos\Modelo\Autenticavel;
 
 class Autenticador
 {
-     public function tentaLogin(Diretor $diretor, string $senha)
+     public function tentaLogin(Autenticavel $autenticavel, string $senha)
      {
-          if ($diretor->podeAutenticar($senha)) {
+          if ($autenticavel->podeAutenticar($senha)) {
                echo "Ok. Usuário logado no sistema.";
           } else {
                echo "Ops, senha incorreta!";
