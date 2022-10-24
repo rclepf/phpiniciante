@@ -1,23 +1,23 @@
 <?php
 
-require_once 'src/Conta.php';
-require_once 'src/Titular.php';
-require_once 'src/CPF.php';
-require_once 'src/endereco.php';
+require_once 'autoload.php';
+
+use Estudos\Bancos\Modelo\Conta\{Conta, Titular};
+use Estudos\Bancos\Modelo\{CPF, Endereco};
     
 $endereco = new Endereco(cidade: 'BH', bairro: 'Centro', rua:'Rua da Bahia', numero:'1010');
 $endereco1 = new Endereco(cidade: 'BH', bairro: 'Centro', rua:'Rua São Paulo', numero:'1105');
-$primeiraConta = new Conta(new Titular(new CPF('089.155.136-55'), 'Rodolfo Clepf', $endereco));
+$primeiraConta = new Conta(new Titular(new CPF('089.155.136-55'), 'Rodolfo Clepf', $endereco), 1);
 $primeiraConta->deposita(500);
 $primeiraConta->saca(300);
 
-$segundaConta = new Conta(new Titular(new CPF('089.154.136-51'), 'Fabi Furtado', $endereco));
+$segundaConta = new Conta(new Titular(new CPF('089.154.136-51'), 'Fabi Furtado', $endereco), 2);
 
-$terceiraConta = new Conta(new Titular(new CPF('089.154.126-51'), 'Bob the Cat', $endereco));
+$terceiraConta = new Conta(new Titular(new CPF('089.154.126-51'), 'Bob the Cat', $endereco), 2);
 
-$quartaConta = new Conta(new Titular(new CPF('089.154.126-52'), 'Pessoa Aleatória', $endereco1));
+$quartaConta = new Conta(new Titular(new CPF('089.154.126-52'), 'Pessoa Aleatoria', $endereco1), 1);
 
-echo $primeiraConta->recuperaNomeTitular() . PHP_EOL;
+echo $primeiraConta->recuperaNome() . PHP_EOL;
 echo $primeiraConta->recuperaCpfTitular() . PHP_EOL;
 echo $primeiraConta->recuperaSaldo() . PHP_EOL;
 

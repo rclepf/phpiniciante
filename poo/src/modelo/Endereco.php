@@ -1,6 +1,6 @@
 <?php
 
-namespace estudos\banco\modelo;
+namespace Estudos\Bancos\Modelo;
 
 class Endereco
 {

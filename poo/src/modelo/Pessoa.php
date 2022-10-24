@@ -1,6 +1,8 @@
 <?php
 
-namespace estudos\banco\modelo;
+namespace Estudos\Bancos\Modelo;
+
+use Estudos\Bancos\Modelo\CPF;
 
 class Pessoa
 {

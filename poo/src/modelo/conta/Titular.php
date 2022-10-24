@@ -1,6 +1,8 @@
 <?php
 
-namespace estudos\banco\modelo\conta;
+namespace Estudos\Bancos\Modelo\Conta;
+
+use Estudos\Bancos\Modelo\{Pessoa, CPF, Endereco};
 
 class Titular extends Pessoa
 {
