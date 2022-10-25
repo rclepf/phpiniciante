@@ -6,6 +6,8 @@ use Estudos\Bancos\Modelo\CPF;
 
 abstract class Pessoa
 {
+    use AcessoPropriedades;
+    
     protected string $nome;
     private CPF $cpf;
 
@@ -26,7 +28,7 @@ abstract class Pessoa
         return $this->cpf->recuperaNumero();
     }
 
-    protected function validaNome(string $nome)
+    final protected function validaNome(string $nome)
     {
         if (strlen($nome) < 5) {
             echo "Nome precisa ter pelo menos 5 caracteres";
