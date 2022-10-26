@@ -1,11 +1,9 @@
 <?php
 
-$arquivo = fopen('jogosps5.txt', 'r');
+$jogos = file_get_contents('jogosps5.txt');
 
-while (!feof($arquivo)) {
-    $jogos = fgets($arquivo);
+echo $jogos . PHP_EOL;
 
-    echo $jogos;
-}
+$jogos = file('jogosps5.txt');
 
-fclose($arquivo);
+var_dump($jogos);
