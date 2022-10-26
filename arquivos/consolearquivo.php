@@ -1,7 +1,5 @@
 <?php
 
-$teclado = fopen('php://stdin', 'r');
-
-$novoJogo = trim(fgets($teclado));
+$novoJogo = trim(fgets(STDIN));
 
 file_put_contents('novosjogos.txt', "\n$novoJogo", FILE_APPEND);
