@@ -13,7 +13,7 @@ function funcao2()
     for ($i = 1; $i <= 5; $i++) {
         echo $i . PHP_EOL;
     }
-    var_dump(debug_backtrace());
+    print_r(debug_backtrace());
     echo 'Saindo da função 2' . PHP_EOL;
 }
 
