@@ -6,7 +6,7 @@ $outrosJogos = file('novosjogos.txt');
 $arquivoCsv = fopen('jogos.csv', 'w');
 
 foreach ($meusJogos as $jogos) {
-    $linha = [trim($jogos), 'Sim'];
+    $linha = [trim(utf8_decode($jogos)), 'Sim'];
 
     fputcsv($arquivoCsv, $linha, ';');
 
@@ -14,7 +14,7 @@ foreach ($meusJogos as $jogos) {
 }
 
 foreach ($outrosJogos as $jogos) {
-    $linha = [trim($jogos), 'Não'];
+    $linha = [trim(utf8_decode($jogos)), 'Não'];
 
     fputcsv($arquivoCsv, $linha, ';');
     
