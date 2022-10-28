@@ -6,9 +6,9 @@ use Estudos\Bancos\Modelo\Conta\Titular;
 
 abstract class Conta
 {
-    private $titular;
-    private $saldo;
-    private static $numeroDeContas = 0;
+    private Titular $titular;
+    private float $saldo;
+    private static int $numeroDeContas = 0;
 
     public function __construct(Titular $titular)
     {
@@ -22,14 +22,13 @@ abstract class Conta
     {
         self::$numeroDeContas--;
     }
-    
+
     public function saca(float $valorASacar): void
     {
         $tarifaSaque = $valorASacar * $this->percentualTarifa();
         $valorSaque = $valorASacar + $tarifaSaque;
-        if ($valorSaque> $this->saldo) {
-            echo "Saldo indisponível";
-            return;
+        if ($valorSaque > $this->saldo) {
+            throw new SaldoInsuficienteException($valorSaque, $this->saldo);
         }
 
         $this->saldo -= $valorSaque;
@@ -49,20 +48,20 @@ abstract class Conta
         return $this->saldo;
     }
 
-    public function recuperaNome():string
+    public function recuperaNome(): string
     {
         return $this->titular->recuperaNome();
     }
 
-    public function recuperaCpfTitular():string
+    public function recuperaCpfTitular(): string
     {
         return $this->titular->recuperaCpf();
     }
 
-    public static function recuperaNumeroContas():int
+    public static function recuperaNumeroContas(): int
     {
         return self::$numeroDeContas;
     }
 
-    abstract protected function percentualTarifa():float;
+    abstract protected function percentualTarifa(): float;
 }
